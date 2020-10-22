@@ -3,7 +3,7 @@
   "license": "MIT",
   "version": "0.0.1",
   "scripts": {
-    "netlify-build": "yarn func-build && find .",
+    "netlify-build": "yarn func-build && mkdir -p html",
     "func-build": "cd functions/logproxy && yarn"
   }
 }
