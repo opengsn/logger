@@ -4,6 +4,6 @@
   publish = "html"
 
 [[redirects]]
-  from = "/logger"
+  from = "/*"
   to = "/.netlify/functions/logproxy"
   status = 200
