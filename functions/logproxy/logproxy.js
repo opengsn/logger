@@ -3,17 +3,22 @@ const headers = {
     'Content-Type': 'application/json',
     'Access-Control-Allow-Origin': '*',
     'Access-Control-Allow-Headers': 'Content-Type',
-    'Access-Control-Allow-Methods': 'POST'
+    'Access-Control-Allow-Methods': 'POST,GET,HEAD'
 };
 
 
 const customerToken = '47df536d-abc2-4588-969c-c60cdc0b0035'
-loggerUrl = `https://logs-01.loggly.com/inputs/${customerToken}/tag/http/`
+const loggerUrl = `https://logs-01.loggly.com/inputs/${customerToken}/tag/http/`
 
 exports.handler = async (event, context) => {
 
     try {
-        console.log( 'req=', event)
+        if ( event.httpMethod == 'OPTIONS' ) {
+            return {
+                statusCode: 204,
+                headers
+            }
+        }
         ret = await fetch( loggerUrl, {
             method: event.httpMethod,
             body: event.body,
@@ -22,6 +27,7 @@ exports.handler = async (event, context) => {
         console.log( 'resp=', ret)
         return {
             statusCode: 200,
+            headers,
             body: JSON.stringify(ret)
         }
     } catch(e) {
