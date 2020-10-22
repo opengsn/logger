@@ -1,0 +1,9 @@
+[build]
+  command = "pwd; find; yarn netlify-build"
+  functions = "functions"
+  publish = "html"
+
+[[redirects]]
+  from = "/logger"
+  to = "/.netlify/functions/logproxy"
+  status = 200

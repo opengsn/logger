@@ -1,0 +1,9 @@
+{
+  "name": "logproxy",
+  "version": "1.0.0",
+  "main": "logproxy.js",
+  "license": "MIT",
+  "dependencies": {
+    "node-fetch": "^2.6.0"
+  }
+}
